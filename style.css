@@ -32,6 +32,10 @@ p{
     text-align: center;
 }
 
+p:hover{
+    background-color: rgb(91, 91, 245);
+    color: white;
+}
 .submit{
     background-color: rgb(91, 91, 245);
     color: white;
