@@ -1,88 +1,81 @@
 let container = document.querySelector(".container")
 let div = document.querySelector(".firstDiv");
-let Button = document.createElement("button");
-Button.textContent = "Submit";
-container.appendChild(Button);
+let button = document.createElement("button");
+button.textContent = "Submit";
+container.appendChild(button);
 
 
 
 let questions = [
     {
         question: 'Which country hosted the 2010 FIFA World Cup?',
-        answers: ["In South Africa", " In Germany", "In Brazil", "In Japan"],
-        index: 0,
+        answers: ["South Africa", "Germany", "Brazil", "Japan"],
+        questionIndex: 0,
     },
     {
         question: 'Which club has won the Uefa Champions League 3 times in a row?',
         answers: ["Bayern Munich", "Liverpool", "Real Madrid", "FC Barcelona"],
-        index: 1,
+        questionIndex: 1,
     },
     {
         question: 'Which football club is known as "The Red Devils"?',
         answers: ["Liverpool", "Manchester United", "Red Star Belgrade", "Atletico Madrid"],
-        index: 2,
+        questionIndex: 2,
     },
     {
         question:'Who has won the Uefa Champions League with 3 different clubs?',
         answers:["Cristiano Ronaldo", "Clarence Seedorf", "Olivier Giroud", "Marko Van Basten"],
-        index: 3,
+        questionIndex: 3,
     },
     {
         question: "Name only player who won the Ballon d'Or between 2008-2021 except Lionel Messi or Cristiano Ronaldo.",
         answers:["Karim Benzema", "Robert Lewandowski", "Kaka", "Luka Modric"],
-        index: 4,
+        questionIndex: 4,
     },
     {
         question:'Which national team has won 3 national championship in a row? (World cup and Euro)',
         answers:["Spain", "Italy", "Germany", "France"],
-        index: 5,
+        questionIndex: 5,
     },
     {
         question:'Who is the Serie A 2022-2023 MVP of the season?',
         answers:["Paulo Dybala", "Victor Osimhen", "Romelu Lukaku", "Khvicha Kvaratskhelia"],
-        index: 6,
+        questionIndex: 6,
     },
     {
         question:'Name a manager with a nickname "The special one"',
         answers:["Jurgen Klopp", "Pep Guardiola", "Jose Mourinho", "Sam Allardyce"],
-        index: 7,
+        questionIndex: 7,
     },
     {
         question:'Which club has won the Premier League without a single loss?',
         answers:["Liverpool", "Arsenal", "Manchester United", "Manchester City"],
-        index: 8,
+        questionIndex: 8,
     },
+    {
+        question:'Which country hosted the first FIFA World Cup in 1930?',
+        answers:["Brazil", "Uruguay", "Chile", "Paraguay"],
+        questionIndex: 9,
+    }
 ];
 
-let userSelections = [];
 
 
-Button.addEventListener("click", () => {
+button.addEventListener("click", () => {
     calculateResult();
 });
 
 
-
-function handleUserSelection(questionIndex, selectedAnswerIndex) {
-    userSelections[questionIndex] = selectedAnswerIndex;
-}
+let score = 0
 
 function calculateResult() {
-    let score = 0;
-    for (let i = 0; i < questions.length; i++) {
-        if (userSelections[i] === questions[i].index) {
-            score++;
-        }
-    }
-
     div.style.display = "none"
-    Button.style.display = "none"
+    button.style.display = "none"
     let h1 = document.createElement("h1")
     h1.textContent = `Your score: ${score} out of ${questions.length}`
+    h1.style.color = "white"
     container.appendChild(h1)
-    // container.style.backgroundColor = "white"
 }
-
 
 
 function firstQuestion() {
@@ -100,7 +93,8 @@ function firstQuestion() {
     pFourth.textContent = questions[0].answers[3]
 
     p.addEventListener("click", () => {
-        handleUserSelection(0, 0);
+
+        score++;
 
         p.classList.toggle("submit")
         pSecond.classList.remove("submit")
@@ -109,7 +103,6 @@ function firstQuestion() {
     });
 
     pSecond.addEventListener("click", () => {
-        handleUserSelection(0, 1);
 
         p.classList.remove("submit")
         pSecond.classList.toggle("submit")
@@ -118,7 +111,6 @@ function firstQuestion() {
     });
 
     pThird.addEventListener("click", () => {
-        handleUserSelection(0, 2);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -127,7 +119,6 @@ function firstQuestion() {
     })
 
     pFourth.addEventListener("click", () => {
-        handleUserSelection(0, 3);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -161,7 +152,6 @@ function secondQuestion() {
     pFourth.textContent = questions[1].answers[3]
 
     p.addEventListener("click", () => {
-        handleUserSelection(2, 0);
 
         p.classList.toggle("submit")
         pSecond.classList.remove("submit")
@@ -170,7 +160,6 @@ function secondQuestion() {
     });
 
     pSecond.addEventListener("click", () => {
-        handleUserSelection(2, 1);
 
         p.classList.remove("submit")
         pSecond.classList.toggle("submit")
@@ -179,7 +168,8 @@ function secondQuestion() {
     });
 
     pThird.addEventListener("click", () => {
-        handleUserSelection(2, 2);
+
+        score++;
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -188,7 +178,6 @@ function secondQuestion() {
     })
 
     pFourth.addEventListener("click", () => {
-        handleUserSelection(2, 3);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -222,7 +211,6 @@ function thirdQuestion() {
     pFourth.textContent = questions[2].answers[3]
 
     p.addEventListener("click", () => {
-        handleUserSelection(1, 0);
 
         p.classList.toggle("submit")
         pSecond.classList.remove("submit")
@@ -231,7 +219,8 @@ function thirdQuestion() {
     });
 
     pSecond.addEventListener("click", () => {
-        handleUserSelection(1, 1);
+
+        score++;
 
         p.classList.remove("submit")
         pSecond.classList.toggle("submit")
@@ -240,7 +229,6 @@ function thirdQuestion() {
     });
 
     pThird.addEventListener("click", () => {
-        handleUserSelection(1, 2);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -249,7 +237,6 @@ function thirdQuestion() {
     })
 
     pFourth.addEventListener("click", () => {
-        handleUserSelection(1, 3);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -276,8 +263,6 @@ function fourthQuestion() {
     let pFourth = document.createElement("p")
 
 
-
-
     h2.textContent = questions[3].question;
     p.textContent = questions[3].answers[0];
     pSecond.textContent = questions[3].answers[1];
@@ -285,7 +270,6 @@ function fourthQuestion() {
     pFourth.textContent = questions[3].answers[3]
 
     p.addEventListener("click", () => {
-        handleUserSelection(1, 0);
 
         p.classList.toggle("submit")
         pSecond.classList.remove("submit")
@@ -294,7 +278,8 @@ function fourthQuestion() {
     });
 
     pSecond.addEventListener("click", () => {
-        handleUserSelection(1, 1);
+
+        score++;
 
         p.classList.remove("submit")
         pSecond.classList.toggle("submit")
@@ -303,7 +288,6 @@ function fourthQuestion() {
     });
 
     pThird.addEventListener("click", () => {
-        handleUserSelection(1, 2);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -312,7 +296,6 @@ function fourthQuestion() {
     })
 
     pFourth.addEventListener("click", () => {
-        handleUserSelection(1, 3);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -328,6 +311,7 @@ function fourthQuestion() {
     div.appendChild(pFourth)
 }
 fourthQuestion()
+
 
 
 function fifthQuestion() {
@@ -347,7 +331,6 @@ function fifthQuestion() {
     pFourth.textContent = questions[4].answers[3]
 
     p.addEventListener("click", () => {
-        handleUserSelection(3, 0);
 
         p.classList.toggle("submit")
         pSecond.classList.remove("submit")
@@ -356,7 +339,6 @@ function fifthQuestion() {
     });
 
     pSecond.addEventListener("click", () => {
-        handleUserSelection(3, 1);
 
         p.classList.remove("submit")
         pSecond.classList.toggle("submit")
@@ -365,7 +347,6 @@ function fifthQuestion() {
     });
 
     pThird.addEventListener("click", () => {
-        handleUserSelection(3, 2);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -374,7 +355,8 @@ function fifthQuestion() {
     })
 
     pFourth.addEventListener("click", () => {
-        handleUserSelection(3, 3);
+
+        score++;
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -409,7 +391,8 @@ function sixthQuestion () {
     pFourth.textContent = questions[5].answers[3]
 
     p.addEventListener("click", () => {
-        handleUserSelection(0, 0);
+
+        score++;
 
         p.classList.toggle("submit")
         pSecond.classList.remove("submit")
@@ -418,7 +401,6 @@ function sixthQuestion () {
     });
 
     pSecond.addEventListener("click", () => {
-        handleUserSelection(0, 1);
 
         p.classList.remove("submit")
         pSecond.classList.toggle("submit")
@@ -427,7 +409,6 @@ function sixthQuestion () {
     });
 
     pThird.addEventListener("click", () => {
-        handleUserSelection(0, 2);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -436,7 +417,6 @@ function sixthQuestion () {
     })
 
     pFourth.addEventListener("click", () => {
-        handleUserSelection(0, 3);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -469,7 +449,6 @@ function seventhQuestion (){
     pFourth.textContent = questions[6].answers[3]
 
     p.addEventListener("click", () => {
-        handleUserSelection(3, 0);
 
         p.classList.toggle("submit")
         pSecond.classList.remove("submit")
@@ -478,7 +457,6 @@ function seventhQuestion (){
     });
 
     pSecond.addEventListener("click", () => {
-        handleUserSelection(3, 1);
 
         p.classList.remove("submit")
         pSecond.classList.toggle("submit")
@@ -487,7 +465,6 @@ function seventhQuestion (){
     });
 
     pThird.addEventListener("click", () => {
-        handleUserSelection(3, 2);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -496,7 +473,8 @@ function seventhQuestion (){
     })
 
     pFourth.addEventListener("click", () => {
-        handleUserSelection(3, 3);
+
+        score++;
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -529,7 +507,6 @@ function eigthQuestion () {
     pFourth.textContent = questions[7].answers[3]
 
     p.addEventListener("click", () => {
-        handleUserSelection(2, 0);
 
         p.classList.toggle("submit")
         pSecond.classList.remove("submit")
@@ -538,7 +515,6 @@ function eigthQuestion () {
     });
 
     pSecond.addEventListener("click", () => {
-        handleUserSelection(2, 1);
 
         p.classList.remove("submit")
         pSecond.classList.toggle("submit")
@@ -547,7 +523,8 @@ function eigthQuestion () {
     });
 
     pThird.addEventListener("click", () => {
-        handleUserSelection(2, 2);
+
+        score++;
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -556,7 +533,6 @@ function eigthQuestion () {
     })
 
     pFourth.addEventListener("click", () => {
-        handleUserSelection(2, 3);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -589,7 +565,6 @@ function ninthQuestion () {
     pFourth.textContent = questions[8].answers[3]
 
     p.addEventListener("click", () => {
-        handleUserSelection(1, 0);
 
         p.classList.toggle("submit")
         pSecond.classList.remove("submit")
@@ -598,7 +573,8 @@ function ninthQuestion () {
     });
 
     pSecond.addEventListener("click", () => {
-        handleUserSelection(1, 1);
+
+        score++;
 
         p.classList.remove("submit")
         pSecond.classList.toggle("submit")
@@ -607,7 +583,6 @@ function ninthQuestion () {
     });
 
     pThird.addEventListener("click", () => {
-        handleUserSelection(1, 2);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -616,7 +591,6 @@ function ninthQuestion () {
     })
 
     pFourth.addEventListener("click", () => {
-        handleUserSelection(1, 3);
 
         p.classList.remove("submit")
         pSecond.classList.remove("submit")
@@ -632,3 +606,64 @@ function ninthQuestion () {
     div.appendChild(pFourth)
 }
 ninthQuestion()
+
+
+function tenthQuestion () {
+    let h2 = document.createElement("h2");
+    let p = document.createElement("p");
+    let pSecond = document.createElement("p");
+    let pThird = document.createElement("p")
+    let pFourth = document.createElement("p")
+
+
+    h2.textContent = questions[9].question;
+    p.textContent = questions[9].answers[0];
+    pSecond.textContent = questions[9].answers[1];
+    pThird.textContent = questions[9].answers[2]
+    pFourth.textContent = questions[9].answers[3]
+
+    p.addEventListener("click", () => {
+
+        p.classList.toggle("submit")
+        pSecond.classList.remove("submit")
+        pThird.classList.remove("submit")
+        pFourth.classList.remove("submit")
+    });
+
+    pSecond.addEventListener("click", () => {
+
+        score++;
+
+        p.classList.remove("submit")
+        pSecond.classList.toggle("submit")
+        pThird.classList.remove("submit")
+        pFourth.classList.remove("submit")
+    });
+
+    pThird.addEventListener("click", () => {
+
+        p.classList.remove("submit")
+        pSecond.classList.remove("submit")
+        pThird.classList.toggle("submit")
+        pFourth.classList.remove("submit")
+    })
+
+    pFourth.addEventListener("click", () => {
+
+        p.classList.remove("submit")
+        pSecond.classList.remove("submit")
+        pThird.classList.remove("submit")
+        pFourth.classList.toggle("submit")
+    })
+
+
+    div.appendChild(h2);
+    div.appendChild(p);
+    div.appendChild(pSecond);
+    div.appendChild(pThird)
+    div.appendChild(pFourth)
+}
+tenthQuestion()
+
+
+
