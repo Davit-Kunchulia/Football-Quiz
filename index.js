@@ -195,7 +195,6 @@ function secondQuestion() {
 secondQuestion()
 
 
-
 function thirdQuestion() {
     let h2 = document.createElement("h2");
     let p = document.createElement("p");
@@ -254,7 +253,6 @@ function thirdQuestion() {
 thirdQuestion()
 
 
-
 function fourthQuestion() {
     let h2 = document.createElement("h2");
     let p = document.createElement("p");
@@ -311,7 +309,6 @@ function fourthQuestion() {
     div.appendChild(pFourth)
 }
 fourthQuestion()
-
 
 
 function fifthQuestion() {
