@@ -73,7 +73,7 @@ function calculateResult() {
     button.style.display = "none"
     let h1 = document.createElement("h1")
     h1.textContent = `Your score: ${score} out of ${questions.length}`
-    h1.style.color = "white"
+    h1.style.color = "black"
     container.appendChild(h1)
 }
 
